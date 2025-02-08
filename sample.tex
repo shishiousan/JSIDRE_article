@@ -1,0 +1,61 @@
+\documentclass[a4paper,10ptj,twocolumn]{jsarticle}
+\usepackage{jsidre_article}
+
+\begin{document}
+
+% Roman page numbering for the front matter
+\pagenumbering{roman}
+
+% information for the title page
+\title{農業農村工学会論文集Ver.5の\LaTeX による再現}
+\subtitle{サブタイトルの作成例}
+\author{学会太郎\textsuperscript{*} 論文 花\textsuperscript{**} IRRIGATION Jan\textsuperscript{***}}
+\affiliate{%
+	\textsuperscript{*}農土大学農学部，〒105-0004 東京都港区新橋5-34-4\\
+	\textsuperscript{**}農土開発株式会社，〒812-0053 福岡市東区箱崎6-11-2\\
+	\textsuperscript{***}Department of Geography, University of Arizona, Tucson, Arizona 85721, U.S.A.
+}
+\contact{Correspondence: 学会太郎，e-mail: gakkaitaro@jsidre.or.jp}
+\jabstract{%
+	ここは要旨(アブストラクト)です．
+}
+\jkeywords{キーワードがここに来る}
+
+% information for the english title page
+\etitle{Print Sample of English Manuscripts for Transactions of JSIDRE Ver.5}
+\esubtitle{Example of subtitle}
+\eauthor{GAKKAI Taro\textsuperscript{*}, RONBUN Hana\textsuperscript{**} and IRRIGATION Jan\textsuperscript{***}}
+\eaffiliate{%
+	\textsuperscript{*}Faculty of Agriculture, Noudo University, 5-34-4 Shimbashi, Minato-ku, Tokyo 105-0004, JAPAN\\
+	\textsuperscript{**}Noudo Kaihatsu Co., Ltd., 6-11-2 Hakozaki, Higashi-ku, Fukuoka 812-0053, JAPAN\\
+	\textsuperscript{***}Department of Geography, University of Arizona, Tucson, Arizona 85721, U.S.A.
+}
+\eabstract{%
+	English abstract comes here
+}
+\ekeywords{English keywords come here}
+
+% title page
+{
+	\let\clearpage\relax
+	\maketitle
+}
+
+% main text starts from here
+\section{はじめに}
+\small
+本文はここからです．
+
+\section{手法}
+
+\subsection{支配方程式}
+
+\subsubsection{有限要素法による離散化}
+
+\section{数値解析}
+\section{おわりに}
+
+% english title page (put at the end)
+\makeenglishtitle
+
+\end{document}

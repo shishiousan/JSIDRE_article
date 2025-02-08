@@ -1,0 +1,110 @@
+%%% 
+% author: shion shimizu  
+% date created : 2025-02-08
+% description : non-official style file to reproduce jsidre article template 
+%               in latex environment 
+% update : coming soon 
+%%%
+
+\ProvidesPackage{jsidre_article}[2025/02/08 JSIDRE Article]
+
+% Load required packages
+\RequirePackage[dvipdfmx]{graphicx}
+\RequirePackage{times}
+\RequirePackage{amsmath}
+\RequirePackage[top=25truemm,bottom=20truemm,left=20truemm,right=20truemm]{geometry}
+\RequirePackage{type1cm}
+\RequirePackage{array}
+\RequirePackage{booktabs}
+
+\makeatletter
+
+% Title page settings
+\renewenvironment{titlepage}{%
+	\setlength{\leftskip}{10truemm}%
+	\setlength{\rightskip}{10truemm}%
+}{%
+	\setlength{\leftskip}{0mm}%
+	\setlength{\rightskip}{0mm}%
+}
+
+% Define commands for title, subtitle, etc.
+\newcommand{\subtitle}[1]{\gdef\@subtitle{#1}}
+\newcommand{\affiliate}[1]{\gdef\@affiliate{#1}}
+\newcommand{\contact}[1]{\gdef\@contact{#1}}
+\newcommand{\jabstract}[1]{\gdef\@jabstract{#1}}
+\newcommand{\jkeywords}[1]{\gdef\@jkeywords{#1}}
+\newcommand{\etitle}[1]{\gdef\@etitle{#1}}
+\newcommand{\esubtitle}[1]{\gdef\@esubtitle{#1}}
+\newcommand{\eauthor}[1]{\gdef\@eauthor{#1}}
+\newcommand{\eaffiliate}[1]{\gdef\@eaffiliate{#1}}
+\newcommand{\eabstract}[1]{\gdef\@eabstract{#1}}
+\newcommand{\ekeywords}[1]{\gdef\@ekeywords{#1}}
+
+% Title page layout
+\renewcommand{\maketitle}{%
+	\onecolumn
+	\begin{titlepage}
+		\vspace*{5truemm}
+		\begin{center}
+			{\fontsize{16truept}{24truept}\selectfont\@title\par}
+			\vspace{5truemm}
+			{\fontsize{10truept}{15truept}\selectfont ― \@subtitle ―\par}
+			\vspace{10truemm}
+			{\fontsize{12truept}{18truept}\selectfont\@author\par}
+			\vspace{5truemm}
+			{\fontsize{8truept}{12truept}\selectfont\@affiliate\par}
+			\vspace{5truemm}
+			{\fontsize{8truept}{12truept}\selectfont\@contact\par}
+		\end{center}
+		\vspace{10truemm}
+		{\fontsize{8truept}{12truept}\selectfont
+			\noindent{\centering{\gt 要 旨}\par}
+			\@jabstract\par
+			\vspace{5truemm}
+			\noindent{\gt キーワード：}\@jkeywords\par}
+	\end{titlepage}
+	\twocolumn
+}
+
+% English title page command
+\newcommand{\makeenglishtitle}{%
+	\onecolumn
+	\begin{titlepage}
+		\vspace*{5truemm}
+		\begin{center}
+			{\fontsize{12pt}{18pt}\selectfont\textbf{\@etitle}\par}
+			\vspace{5truemm}
+			{\fontsize{10pt}{15pt}\selectfont ― \@esubtitle ―\par}
+			\vspace{10truemm}
+			{\fontsize{10pt}{15pt}\selectfont\@eauthor\par}
+			\vspace{5truemm}
+			{\fontsize{9pt}{13.5pt}\selectfont\itshape\@eaffiliate\par}
+		\end{center}
+		\vspace{10truemm}
+		{\fontsize{9pt}{13.5pt}\selectfont
+			\noindent\textbf{Abstract}\par
+			\@eabstract\par
+			\vspace{5truemm}
+			\noindent\textbf{Key words: }\itshape\@ekeywords\par}
+	\end{titlepage}
+	\twocolumn
+}
+
+% Section heading settings
+\renewcommand*{\thesection}{\arabic{section}.}
+\renewcommand{\section}{\@startsection{section}{1}{\z@}%
+	{1.0\baselineskip}{0.5\baselineskip}%
+	{\normalfont\fontsize{10truept}{15truept}\selectfont\sffamily}}
+\renewcommand{\subsection}{\@startsection{subsection}{2}{\z@}%
+	{1.0\baselineskip}{0pt}%
+	{\normalfont\fontsize{9truept}{13.5truept}\selectfont\sffamily}}
+\renewcommand{\subsubsection}{\@startsection{subsubsection}{3}{\z@}%
+	{1.0\baselineskip}{0pt}%
+	{\normalfont\fontsize{9truept}{13.5truept}\selectfont\sffamily}}
+
+% Figure and table caption settings
+\renewcommand{\figurename}{Fig.}
+\renewcommand{\tablename}{Table}
+
+\makeatother
