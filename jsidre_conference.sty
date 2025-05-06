@@ -1,0 +1,76 @@
+%%% 
+% author: shion shimizu  
+% date created : 2025-04-03
+% description : non-official style file to make jsidre conference template
+% update : 
+%%%
+
+\ProvidesPackage{jsidre_conference}[2025/04/03 JSIDRE Conference]
+
+% Required packages
+\RequirePackage[top=25truemm,bottom=27truemm,left=23truemm,right=25truemm,footnotesep=0em,
+	nohead, nofoot, nomarginpar, includefoot]{geometry}
+\RequirePackage{setspace}
+\RequirePackage{titling}
+\RequirePackage{fancyhdr}
+\RequirePackage[dvipdfmx]{graphicx}
+\RequirePackage{caption}
+\RequirePackage{wrapfig}
+\RequirePackage{array}
+\RequirePackage{ifthen}
+
+% Font settings
+\renewcommand{\normalsize}{\fontsize{11ptj}{11ptj}\selectfont}
+\renewcommand{\baselinestretch}{1.0}
+
+% Adjust spacing to achieve approximately 40 lines per page, 40 characters per line
+\AtBeginDocument{
+	\setlength{\baselineskip}{6.125mm} % (297mm - 25mm - 27mm) / 40 lines ≈ 6.125mm
+	\setlength{\parindent}{1em}
+}
+
+% Title, author, and affiliation formatting
+\makeatletter
+\renewcommand{\maketitle}{%
+	\thispagestyle{empty}
+	\begin{center}
+		{\fontsize{12ptj}{15ptj}\selectfont \@title}
+
+		\vspace{1em}
+
+		{\fontsize{10ptj}{10ptj}\selectfont \@author}
+	\end{center}
+
+}
+
+\renewcommand*{\thesection}{\gt \arabic{section}.}
+\renewcommand{\section}{\@startsection{section}{1}{\z@}%
+	{0.1ex \@plus -0ex \@minus -.0ex}%
+	{0.0ex \@plus.1ex}%
+	{\normalfont\fontsize{11ptj}{13ptj}\selectfont\gt}}
+
+\renewcommand{\footnoterule}{%
+	\kern -3pt
+	\hrule width \textwidth
+	\kern 2pt
+}
+
+\makeatother
+
+% For handling multiple authors with affiliation markers
+\newcommand{\authormark}[2]{#1\textsuperscript{#2}}
+\newcommand{\presenter}[1]{○#1}
+
+\newcommand\affiliation[2]{%
+	\begingroup
+	\renewcommand\thefootnote{}\footnote{\raggedright
+		\fontsize{9ptj}{10ptj}\selectfont #1 \\ \textbf{\emph{Keywords}}：#2}
+	\addtocounter{footnote}{-1}%
+	\endgroup
+}
+
+% Figure and table caption settings
+\captionsetup{font=small, labelsep=space}
+\captionsetup[figure]{name={図  }}
+\captionsetup[table]{name={表 }}
+
